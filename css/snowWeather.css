@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url("/images/snow.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  /* background-image: url("https://images.unsplash.com/photo-1623645932244-02c0160eac1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"); */
+}
+
+/* weather data showing div (glassmorphims effect) starts*/
+
+.data-div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* max-width: 1200px; */
+  flex-wrap: wrap;
+  z-index: 1;
+  height: 100vh; /* Set height to 100vh to cover the entire viewport height */
+}
+
+.data-div .inner-data-div {
+  position: relative;
+  width: 100%;
+  /* height: 100%; Remove height to allow the content to dictate the height */
+  margin: 30px;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+.data-div .inner-data-div .content {
+  padding: 20px;
+  text-align: center;
+}
+
+.data-div .inner-data-div {
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.7s;
+}
+
+.data-div .inner-data-div:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* weather data showing div (glassmorphims effect) starts*/
+
+/*snow Fall Animation start*/
+
+.snow-weather {
+  height: 100%;
+}
+.snow,
+.snow::after,
+.snow::before {
+  position: absolute;
+  top: -650px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(4px 4px at 100px 50px, #fff, transparent),
+    radial-gradient(4px 4px at 100px 50px, #fff, transparent),
+    radial-gradient(6px 6px at 200px 150px, #fff, transparent),
+    radial-gradient(3px 3px at 300px 250px, #fff 50%, transparent),
+    radial-gradient(4px 4px at 400px 350px, #fff 50%, transparent),
+    radial-gradient(6px 6px at 500px 100px, #fff 50%, transparent),
+    radial-gradient(3px 3px at 50px 100px, #fff 50%, transparent),
+    radial-gradient(4px 4px at 150px 300px, #fff 50%, transparent),
+    radial-gradient(6px 6px at 250px 400px, #fff 50%, transparent),
+    radial-gradient(3px 3px at 350px 500px, #fff 50%, transparent),
+    radial-gradient(4px 4px at 100px 50px, #fff 50%, transparent),
+    radial-gradient(6px 6px at 150px 50px, #fff 50%, transparent),
+    radial-gradient(3px 3px at 300px 250px, #fff 50%, transparent),
+    radial-gradient(4px 4px at 400px 350px, #fff 50%, transparent),
+    radial-gradient(6px 6px at 550px 250px, #fff 50%, transparent),
+    radial-gradient(3px 3px at 400px 200px, #fff 50%, transparent);
+  background-size: 650px 650px;
+  animation: snowAnim 3s linear infinite;
+  content: "";
+}
+
+.snow::after {
+  margin-left: -250px;
+  opacity: 0.5;
+  /* filter: blur(2px); */
+  animation-direction: reverse;
+  animation-duration: 6s;
+}
+.snow::before {
+  margin-left: -350px;
+  opacity: 0.7;
+  /* filter: blur(1px); */
+  animation-duration: 9s;
+  animation-direction: reverse;
+}
+
+@keyframes snowAnim {
+  to {
+    transform: translateY(650px);
+  }
+}
+/*snow Fall Animation end*/

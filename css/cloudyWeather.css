@@ -44,7 +44,7 @@ body {
   backdrop-filter: blur(5px);
 }
 
-.data-div .inner-data-div .content {
+.data-div .inner-data-div .row {
   padding: 20px;
   text-align: center;
 }
@@ -76,9 +76,9 @@ body {
 
 .main .cloudy-weather img {
   position: absolute;
-  top: 0;
+  top: -300px;
   max-width: 100%;
-  animation: animate calc(15s * var(--i)) 2s linear infinite;
+  animation: animate calc(10s * var(--i)) 2s linear infinite;
 }
 
 @keyframes animate {
@@ -91,3 +91,77 @@ body {
 }
 
 /*cloud moving animation ends*/
+
+/*weather data mainpulation css starts*/
+.current-Weather input {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: none;
+  color: white;
+}
+.current-Weather input::placeholder {
+  color: white;
+}
+.current-Weather input:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.current-Weather .weather-info {
+  color: white;
+}
+
+.current-Weather .today-forecast {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  color: white;
+}
+
+.Air-conditions {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  color: white;
+}
+
+.row .today-forecast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.cards .card {
+  width: 100px;
+  height: 130px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  /* background-color: white; */
+  text-align: center;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.forecast-card .card-icon {
+  width: 50%;
+  margin: 0 auto;
+}
+.forecast-card .day-temp {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.forecast {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+}
+
+/*weather data mainpulation css ends*/
