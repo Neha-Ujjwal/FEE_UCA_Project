@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="./css/sunnyWeather.css" /> -->
+    <!-- <link rel="stylesheet" href="./css/rainyWeather.css" /> -->
+    <!-- <link rel="stylesheet" href="./css/cloudyWeather.css" /> -->
+    <!-- <link rel="stylesheet" href="./css/snowWeather.css" /> -->
+    <link rel="stylesheet" href="./css/night.css" />
+    <title>weather Forecast App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <div class="container m-auto">
+        <div class="night">
+          <div class="data-div">
+            <div class="inner-data-div">
+              <div class="row">
+                <div class="current-Weather col-8 my-2">
+                  <input
+                    type="text"
+                    class="form-control w-100"
+                    placeholder="search"
+                    style="border-radius: 15px"
+                  />
+                  <div class="weather-info my-3">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h1>Madrid</h1>
+                        <p>Sunday | 10:30</p>
+                        <h1 style="font-size: 80px">35C</h1>
+                      </div>
+
+                      <img
+                        src="./icons/sun/sun-icon.png"
+                        style="height: 200px; width: 200px"
+                      />
+                    </div>
+                  </div>
+                  <div class="today-forecast p-3 d-flex">
+                    <div class="forecast-card">
+                      <div class="cards" id="weather-card">
+                        <h5 class="day-name">6:00 am</h5>
+                        <div class="card-icon">
+                          <img
+                            src="/icons/sun/27.png"
+                            style="height: 50px; width: 50px"
+                          />
+                        </div>
+                        <div class="day-temp">
+                          <h5 class="temp">32</h5>
+                          <span class="temp-unit">C</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="forecast-card">
+                      <div class="cards" id="weather-card">
+                        <h5 class="day-name">Monday</h5>
+                        <div class="card-icon">
+                          <img
+                            src="/icons/sun/27.png"
+                            style="height: 50px; width: 50px"
+                          />
+                        </div>
+                        <div class="day-temp">
+                          <h4 class="temp">32</h4>
+                          <span class="temp-unit">C</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="forecast-card">
+                      <div class="cards" id="weather-card">
+                        <h5 class="day-name">Monday</h5>
+                        <div class="card-icon">
+                          <img
+                            src="/icons/sun/27.png"
+                            style="height: 50px; width: 50px"
+                          />
+                        </div>
+                        <div class="day-temp">
+                          <h4 class="temp">32</h4>
+                          <span class="temp-unit">C</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="forecast-card">
+                      <div class="cards" id="weather-card">
+                        <h5 class="day-name">Monday</h5>
+                        <div class="card-icon">
+                          <img
+                            src="/icons/sun/27.png"
+                            style="height: 50px; width: 50px"
+                          />
+                        </div>
+                        <div class="day-temp">
+                          <h4 class="temp">32</h4>
+                          <span class="temp-unit">C</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Air-conditions p-3 my-3">
+                    <h5>Air Conditions</h5>
+                    <div class="mt-3">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex mx-2 col-6">
+                          <div class="mx-2">
+                            <img
+                              src="/icons/weather_icons/real_feel_icon.png"
+                            />
+                          </div>
+                          <div>
+                            <span>Real feel</span>
+                            <p style="font-size: 27px"><b>Data</b></p>
+                          </div>
+                        </div>
+
+                        <div class="d-flex mx-2 col-6">
+                          <div class="mx-2">
+                            <img src="/icons/weather_icons/wind_icon.png" />
+                          </div>
+                          <div>
+                            <span>Wind</span>
+                            <p style="font-size: 27px"><b>Data</b></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex mx-2 col-6">
+                          <div class="mx-2">
+                            <img src="/icons/weather_icons/rain_icon.png" />
+                          </div>
+                          <div>
+                            <span>Chance of rain</span>
+                            <p style="font-size: 27px"><b>Data</b></p>
+                          </div>
+                        </div>
+
+                        <div class="d-flex mx-2 col-6">
+                          <div class="mx-2">
+                            <img src="/icons/weather_icons/sun_icon.png" />
+                          </div>
+                          <div>
+                            <span>UV Index</span>
+                            <p style="font-size: 27px"><b>Data</b></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="week-forecast mb-4 mt-5 col-4 p-4">
+                  <div>
+                    <h5>7-day Forecast</h5>
+                  </div>
+
+                  <div class="week-forecast-div my-3 py-2">
+                    <p class="day-name m-0">Today</p>
+                    <div class="d-flex align-items-center">
+                      <img
+                        src="/icons/sun/sun-icon.png"
+                        style="height: 40px; width: 40px"
+                      />
+                      <span class="ml-2">Sunny</span>
+                    </div>
+                    <p class="m-0">36/22</p>
+                  </div>
+                  <div style="border-bottom: 1px solid #ffffff85"></div>
+                  <div class="week-forecast-div py-2 my-3">
+                    <p class="day-name m-0">Today</p>
+                    <div class="d-flex align-items-center">
+                      <img
+                        src="/icons/sun/sun-icon.png"
+                        style="height: 40px; width: 40px"
+                      />
+                      <span class="ml-2">Sunny</span>
+                    </div>
+                    <p class="m-0">36/22</p>
+                  </div>
+                  <div style="border-bottom: 1px solid #ffffff85"></div>
+                  <div class="week-forecast-div py-2 my-3">
+                    <p class="day-name m-0">Today</p>
+                    <div class="d-flex align-items-center">
+                      <img
+                        src="/icons/sun/sun-icon.png"
+                        style="height: 40px; width: 40px"
+                      />
+                      <span class="ml-2">Sunny</span>
+                    </div>
+                    <p class="m-0">36/22</p>
+                  </div>
+                  <div style="border-bottom: 1px solid #ffffff85"></div>
+                  <div class="week-forecast-div py-2 my-3">
+                    <p class="day-name m-0">Today</p>
+                    <div class="d-flex align-items-center">
+                      <img
+                        src="/icons/sun/sun-icon.png"
+                        style="height: 40px; width: 40px"
+                      />
+                      <span class="ml-2">Sunny</span>
+                    </div>
+                    <p class="m-0">36/22</p>
+                  </div>
+                  <div style="border-bottom: 1px solid #ffffff85"></div>
+                  <div class="week-forecast-div py-2 my-3">
+                    <p class="day-name m-0">Today</p>
+                    <div class="d-flex align-items-center">
+                      <img
+                        src="/icons/sun/sun-icon.png"
+                        style="height: 40px; width: 40px"
+                      />
+                      <span class="ml-2">Sunny</span>
+                    </div>
+                    <p class="m-0">36/22</p>
+                  </div>
+                  <div style="border-bottom: 1px solid #ffffff85"></div>
+                  <div class="week-forecast-div py-2 my-3">
+                    <p class="day-name m-0">Today</p>
+                    <div class="d-flex align-items-center">
+                      <img
+                        src="/icons/sun/sun-icon.png"
+                        style="height: 40px; width: 40px"
+                      />
+                      <span class="ml-2">Sunny</span>
+                    </div>
+                    <p class="m-0">36/22</p>
+                  </div>
+                  <div style="border-bottom: 1px solid #ffffff85"></div>
+                  <div class="week-forecast-div py-2 my-2">
+                    <p class="day-name m-0">Today</p>
+                    <div class="d-flex align-items-center">
+                      <img
+                        src="/icons/sun/sun-icon.png"
+                        style="height: 40px; width: 40px"
+                      />
+                      <span class="ml-2">Sunny</span>
+                    </div>
+                    <p class="m-0">36/22</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+       
+        </div>
+
+        
+    </div>
+</div>
+</body>
+
+<script
+src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+crossorigin="anonymous"
+></script>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+crossorigin="anonymous"
+></script>
+</html>
+    
+</body>
+</html>
