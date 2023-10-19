@@ -44,23 +44,27 @@
                     class="form-control w-100"
                     placeholder="search"
                     style="border-radius: 15px"
+                    name="city"
+                    id="city"
                   />
                   <div class="weather-info my-3">
                     <div class="d-flex justify-content-between">
-                      <div>
-                        <h1>Madrid</h1>
-                        <p>Sunday | 10:30</p>
-                        <h1 style="font-size: 80px">35C</h1>
+                      <div class="city-details">
+                        <h1 id="city-name">Madrid</h1>
+                        <p id="time-details">Sunday | 10:30</p>
+                        <h1 id="temp" style="font-size: 70px">35C</h1>
                       </div>
 
                       <img
-                        src="./icons/sun/sun-icon.png"
+                        src="/icons/sun/Sunny-icon.png"
                         style="height: 200px; width: 200px"
                       />
                     </div>
                   </div>
-                  <div class="today-forecast p-3 d-flex">
-                    <div class="forecast-card">
+                  <div
+                    class="today-forecast p-3 d-flex justify-content-between"
+                  >
+                    <!-- <div class="forecast-card">
                       <div class="cards" id="weather-card">
                         <h5 class="day-name">6:00 am</h5>
                         <div class="card-icon">
@@ -119,7 +123,7 @@
                           <span class="temp-unit">C</span>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="Air-conditions p-3 my-3">
                     <h5>Air Conditions</h5>
@@ -128,49 +132,51 @@
                         <div class="d-flex mx-2 col-6">
                           <div class="mx-2">
                             <img
-                              src="/icons/weather_icons/real_feel_icon_black.png"
+                              src="/icons/weather_icons/real_feel_icon.png"
                             />
                           </div>
                           <div>
                             <span>Real feel</span>
-                            <p style="font-size: 27px"><b>Data</b></p>
+                            <p style="font-size: 27px" id="real-feel">
+                              <b>Data</b>
+                            </p>
                           </div>
                         </div>
 
                         <div class="d-flex mx-2 col-6">
                           <div class="mx-2">
-                            <img
-                              src="/icons/weather_icons/wind_icon_black.png"
-                            />
+                            <img src="/icons/weather_icons/wind_icon.png" />
                           </div>
                           <div>
                             <span>Wind</span>
-                            <p style="font-size: 27px"><b>Data</b></p>
+                            <p style="font-size: 27px" id="wind-speed">
+                              <b>Data</b>
+                            </p>
                           </div>
                         </div>
                       </div>
                       <div class="d-flex justify-content-between">
                         <div class="d-flex mx-2 col-6">
                           <div class="mx-2">
-                            <img
-                              src="/icons/weather_icons/rain_icon_black.png"
-                            />
+                            <img src="/icons/weather_icons/rain_icon.png" />
                           </div>
                           <div>
                             <span>Chance of rain</span>
-                            <p style="font-size: 27px"><b>Data</b></p>
+                            <p style="font-size: 27px" id="rain-chance">
+                              <b>Data</b>
+                            </p>
                           </div>
                         </div>
 
                         <div class="d-flex mx-2 col-6">
                           <div class="mx-2">
-                            <img
-                              src="/icons/weather_icons/sun_icon_black.png"
-                            />
+                            <img src="/icons/weather_icons/humidity.png" />
                           </div>
                           <div>
-                            <span>UV Index</span>
-                            <p style="font-size: 27px"><b>Data</b></p>
+                            <span>Humidity</span>
+                            <p style="font-size: 27px" id="humidity">
+                              <b>Data</b>
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -178,7 +184,7 @@
                   </div>
                 </div>
                 <div class="week-forecast mb-4 mt-5 col-4 p-4">
-                  <div>
+                  <!-- <div>
                     <h5>7-day Forecast</h5>
                   </div>
 
@@ -264,7 +270,7 @@
                       <span class="ml-2">Sunny</span>
                     </div>
                     <p class="m-0">36/22</p>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -273,7 +279,7 @@
       </div>
     </div>
   </body>
-
+  <script src="index.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

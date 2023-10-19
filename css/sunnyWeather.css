@@ -7,10 +7,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  overflow: hidden;
+  overflow: auto;
   margin: 0;
   padding: 0;
   height: 100vh;
+
   background-image: url("/images/cd.jpg");
 }
 
@@ -305,8 +306,8 @@ body {
 }
 
 .week-forecast-div {
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
   align-items: center;
 }
 
