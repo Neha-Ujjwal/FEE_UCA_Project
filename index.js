@@ -7,7 +7,7 @@ cityInput.addEventListener("keydown", function (event) {
 function validateCity() {
   // Get the input value
   const cityName = cityInput.value;
-  const regex = /^[A-Za-z\s]+$/;
+  const regex = /^[A-Za-z\s\-]+$/;
 
   // Check if the input is empty or doesn't match the regex
   if (cityName.trim() === "" || !regex.test(cityName)) {
@@ -56,7 +56,68 @@ async function fetchData() {
   }
 }
 
+function getWeatherImageUrl(data) {
+  console.log(data);
+  let weatherImage;
+
+  if (data.includes("rain")) {
+    weatherImage = `<img src="/icons/Rain-icon.png" style="height: 40px; width: 60px" />`;
+  } else if (
+    data.includes("Cloud") ||
+    data.includes("cloudy") ||
+    data.includes("Overcast")
+  ) {
+    weatherImage = `<img src="/icons/Cloud-icon.png" style="height: 40px; width: 50px" />`;
+  } else if (
+    data.includes("Fog") ||
+    data.includes("Mist") ||
+    data.includes("fog")
+  ) {
+    weatherImage = `<img src="/icons/Fog-icon.png" style="height: 40px; width: 70px" />`;
+  } else if (data.includes("drizzle")) {
+    weatherImage = `<img src="/icons/drizzle-icon.png" style="height: 40px; width: 70px" />`;
+  } else {
+    weatherImage = `<img src="/icons/${data}-icon.png" style="height: 40px; width: 40px" />`;
+  }
+  return weatherImage;
+}
+
+function weatherDay(data) {
+  let weatherOfDay;
+  if (data.includes("rain")) {
+    weatherOfDay = "rain";
+  } else if (
+    data.includes("Cloud") ||
+    data.includes("cloudy") ||
+    data.includes("Overcast")
+  ) {
+    weatherOfDay = "Cloudy";
+  } else if (
+    data.includes("Fog") ||
+    data.includes("Mist") ||
+    data.includes("fog")
+  ) {
+    weatherOfDay = "Fog";
+  } else if (data.includes("drizzle")) {
+    weatherOfDay = "drizzling";
+  } else {
+    weatherOfDay = data;
+  }
+  return weatherOfDay;
+}
 function manipulateData(data) {
+  const weatherImageMain = document.getElementById("weatherImageMain");
+  weatherImageMain.innerHTML = getWeatherImageUrl(data.current.condition.text);
+
+  // Get the image element(s) within "weatherImageMain"
+  const images = weatherImageMain.getElementsByTagName("img");
+
+  // images is an HTMLCollection, so you may need to loop through the elements
+  for (const image of images) {
+    // Set the style properties for each image
+    image.style.height = "200px";
+    image.style.width = "270px";
+  }
   const cityName = document.getElementById("city-name");
   cityName.innerText = data.location.name;
 
@@ -126,28 +187,42 @@ function manipulateData(data) {
   console.log(hourWiseForecast);
 
   for (let i = 6; i <= 21; i = i + 3) {
-    // console.log(hourWiseForecast.hour[i].time);
     const weatherType = hourWiseForecast.hour[i].condition.text;
-    // console.log(weatherType + "-icon.png");
+    // console.log(weatherType);
+
+    // let weatherImage;
+
+    // if (weatherType.includes("rain")) {
+    //   weatherImage = `<img src="/icons/Rain-icon.png" style="height: 40px; width: 60px" />`;
+    // } else if (
+    //   weatherType.includes("Cloud") ||
+    //   weatherType.includes("cloudy") ||
+    //   weatherType.includes("Overcast")
+    // ) {
+    //   weatherImage = `<img src="/icons/Cloud-icon.png" style="height: 40px; width: 50px" />`;
+    // } else if (
+    //   weatherType.includes("Fog") ||
+    //   weatherType.includes("Mist") ||
+    //   weatherType.includes("fog")
+    // ) {
+    //   weatherImage = `<img src="/icons/Fog-icon.png" style="height: 40px; width: 70px" />`;
+    // } else {
+    //   weatherImage = `<img src="/icons/${weatherType}-icon.png" style="height: 40px; width: 40px" />`;
+    // }
+
     todayForecastDiv.innerHTML += `<div class="forecast-card">
-    <div class="cards text-center" id="weather-card">
-      <h6 class="day-name">${
-        i > 12
-          ? hourWiseForecast.hour[i].time.split(" ")[1] + " PM"
-          : hourWiseForecast.hour[i].time.split(" ")[1] + " AM"
-      }</h6>
-   
-        <img
-          src="/icons/sun/${weatherType}-icon.png"
-          style="height: 40px; width: 40px"
-        />
-      
-      <div class="day-temp">
-        <h5 class="temp">${Math.floor(hourWiseForecast.hour[i].temp_c)}°C</h5>
-        
+      <div class="cards text-center" id="weather-card">
+        <h6 class="day-name">${
+          i > 12
+            ? hourWiseForecast.hour[i].time.split(" ")[1] + " PM"
+            : hourWiseForecast.hour[i].time.split(" ")[1] + " AM"
+        }</h6>
+        ${getWeatherImageUrl(weatherType)}
+        <div class="day-temp">
+          <h5 class="temp">${Math.floor(hourWiseForecast.hour[i].temp_c)}°C</h5>
+        </div>
       </div>
-    </div>
-  </div>`;
+    </div>`;
   }
 
   //7-day forecast
@@ -166,13 +241,14 @@ function manipulateData(data) {
           i == 0 ? "today" : dateToDay(weekForecast[i].date.split(" ")[0])
         }</p>
         <div class="d-flex align-items-center col-4">
-          <img
-            src="/icons/sun/Sunny-icon.png"
-            style="height: 40px; width: 40px"
-          />
-        <span class="ml-2">Sunny</span>
+          ${getWeatherImageUrl(weekForecast[i].day.condition.text)}
+          <span class="ml-2">${weatherDay(
+            weekForecast[i].day.condition.text
+          )}</span>
         </div>
-        <div class="col-4"> <p class="float-end">36/22</p></div>
+        <div class="col-4"> <p class="float-end">${Math.floor(
+          weekForecast[i].day.maxtemp_c
+        )}/${Math.floor(weekForecast[i].day.mintemp_c)}</p></div>
       </div>
       ${i < 6 ? '<div style="border-bottom: 1px solid #ffffff85"></div>' : ""}`;
   }
