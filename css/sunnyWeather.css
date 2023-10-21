@@ -7,10 +7,10 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  overflow: auto;
+  overflow: hidden;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  /* height: 100vh; */
 
   background-image: url("/images/cd.jpg");
 }
@@ -232,6 +232,9 @@ body {
 /* .sunny-weather .flying-bird */
 
 /*weather data mainpulation css starts*/
+.current-Weather {
+  z-index: 10;
+}
 .current-Weather input {
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
@@ -303,6 +306,7 @@ body {
   border-radius: 20px;
   color: white;
   height: 644px;
+  /* margin-top: 25px !important; */
 }
 
 .week-forecast-div {
@@ -332,6 +336,7 @@ input:focus {
 .fahren-Cel-buttons {
   position: absolute;
   right: 13px;
+  z-index: 1;
   /* bottom: 5px; */
   /* margin-bottom: 4px; */
   /* top: 14px; */
@@ -340,3 +345,39 @@ input:focus {
 /*weather data mainpulation css ends*/
 
 /*flipping  aimtion starts*/
+@media screen and (max-width: 650px) {
+  .current-Weather {
+    width: 100% !important;
+  }
+
+  body {
+    overflow: scroll;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+  }
+  .fahren-Cel-buttons {
+    position: relative;
+  }
+  .week-forecast {
+    width: 100% !important;
+  }
+  .current-Weather {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  body {
+    overflow: scroll;
+    height: 100%;
+  }
+  .fahren-Cel-buttons {
+    position: relative;
+  }
+  .week-forecast {
+    display: none;
+  }
+  .current-Weather {
+    width: 100% !important;
+  }
+}

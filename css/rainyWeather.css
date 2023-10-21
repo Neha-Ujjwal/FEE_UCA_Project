@@ -10,8 +10,8 @@ body {
   align-items: center; */
   margin: 0;
   padding: 0;
-  height: 100vh;
-  overflow: auto;
+  /* height: 100vh; */
+  overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -66,8 +66,8 @@ body {
 /* weather data showing div (glassmorphims effect) ends*/
 
 .main {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   animation: rain 0.5s linear infinite;
   background-image: url("../images/rain.png");
 }
@@ -229,3 +229,39 @@ body {
 /*weather data mainpulation css ends*/
 
 /*flipping  aimtion starts*/
+@media screen and (max-width: 650px) {
+  .current-Weather {
+    width: 100% !important;
+  }
+
+  body {
+    overflow: scroll;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+  }
+  .fahren-Cel-buttons {
+    position: relative;
+  }
+  .week-forecast {
+    width: 100% !important;
+  }
+  .current-Weather {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  body {
+    overflow: scroll;
+    height: 100%;
+  }
+  .fahren-Cel-buttons {
+    position: relative;
+  }
+  .week-forecast {
+    display: none;
+  }
+  .current-Weather {
+    width: 100% !important;
+  }
+}

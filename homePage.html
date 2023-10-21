@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="homePage.css" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h2>
+          <a href="#"><i class="ion-plane"></i> WeatherWave</a>
+        </h2>
+      </header>
+
+      <div class="cover">
+        <h1>WeatherUnveil: Explore What's Out There.</h1>
+        <form class="flex-form">
+          <label for="from">
+            <i class="ion-location"></i>
+          </label>
+          <input
+            type="search"
+            placeholder="Enter city"
+            id="cityInputHomePage"
+          />
+          <input type="submit" value="Search" />
+        </form>
+        <div id="madeby">
+          <span>
+            <a
+              href="https://i.pinimg.com/564x/bf/44/06/bf4406f057eedfe53d3780e8fe6b5855.jpg"
+            ></a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <script>
+      const cityInputHomePage = document.getElementById("cityInputHomePage");
+
+      let fahrenScale = false;
+
+      cityInputHomePage.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          window.location.href = "index.html";
+          // validateCity();
+        }
+      });
+    </script>
+  </body>
+</html>

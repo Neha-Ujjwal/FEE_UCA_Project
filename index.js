@@ -79,6 +79,8 @@ async function fetchData() {
     // console.log(url);
     manipulateData(data);
   } catch (error) {
+    alert("Invalid City!!!!!");
+    cityInput.value = "";
     console.log("error occured");
     console.error("Error:", error);
   }
@@ -88,24 +90,29 @@ function getWeatherImageUrl(data) {
   console.log(data);
   let weatherImage;
 
-  if (data.includes("rain")) {
+  if (data.text.includes("rain")) {
     weatherImage = `<img src="/icons/Rain-icon.png" style="height: 40px; width: 60px" />`;
   } else if (
-    data.includes("Cloud") ||
-    data.includes("cloudy") ||
-    data.includes("Overcast")
+    data.text.includes("Cloud") ||
+    data.text.includes("cloudy") ||
+    data.text.includes("Overcast")
   ) {
     weatherImage = `<img src="/icons/Cloud-icon.png" style="height: 40px; width: 50px" />`;
   } else if (
-    data.includes("Fog") ||
-    data.includes("Mist") ||
-    data.includes("fog")
+    data.text.includes("Fog") ||
+    data.text.includes("Mist") ||
+    data.text.includes("fog")
   ) {
     weatherImage = `<img src="/icons/Fog-icon.png" style="height: 40px; width: 70px" />`;
-  } else if (data.includes("drizzle")) {
+  } else if (data.text.includes("drizzle")) {
     weatherImage = `<img src="/icons/drizzle-icon.png" style="height: 40px; width: 70px" />`;
+  } else if (data.text.includes("snow")) {
+    weatherImage = `<img src="/icons/snow-icon.png" style="height: 40px; width: 70px" />`;
+  } else if (data.icon.includes("day")) {
+    console.log(data);
+    weatherImage = `<img src="/icons/Sunny-icon.png" style="height: 40px; width: 40px" />`;
   } else {
-    weatherImage = `<img src="/icons/${data}-icon.png" style="height: 40px; width: 40px" />`;
+    weatherImage = `<img src="/icons/moon/15.png" style="height: 40px; width: 40px" />`;
   }
   return weatherImage;
 }
@@ -128,6 +135,8 @@ function weatherDay(data) {
     weatherOfDay = "Fog";
   } else if (data.includes("drizzle")) {
     weatherOfDay = "drizzling";
+  } else if (data.includes("snow")) {
+    weatherOfDay = "snow";
   } else {
     weatherOfDay = data;
   }
@@ -136,7 +145,7 @@ function weatherDay(data) {
 
 function manipulateData(data) {
   const weatherImageMain = document.getElementById("weatherImageMain");
-  weatherImageMain.innerHTML = getWeatherImageUrl(data.current.condition.text);
+  weatherImageMain.innerHTML = getWeatherImageUrl(data.current.condition);
 
   // Get the image element(s) within "weatherImageMain"
   const images = weatherImageMain.getElementsByTagName("img");
@@ -148,11 +157,18 @@ function manipulateData(data) {
 
   console.log(data.current.condition.text);
 
-  if (data.current.condition.text === "Overcast") {
+  if (
+    data.current.condition.text.includes("Overcast") ||
+    data.current.condition.text.includes("Cloud") ||
+    data.current.condition.text.includes("cloudy")
+  ) {
     cssLink.href = "./css/cloudyWeather.css";
     document.querySelector(".cloud-animation").style.display = "block";
-  } else if (data.forecast.forecastday[0].day.daily_will_it_rain === 1) {
+  } else if (data.current.condition.text.includes("rain")) {
     cssLink.href = "./css/rainyWeather.css";
+    document.querySelector(".cloud-animation").style.display = "none";
+  } else if (data.current.condition.text.includes("snow")) {
+    cssLink.href = "./css/snowWeather.css";
     document.querySelector(".cloud-animation").style.display = "none";
   } else if (data.current.is_day === 0) {
     cssLink.href = "./css/night.css";
@@ -243,7 +259,7 @@ function manipulateData(data) {
   console.log(hourWiseForecast);
 
   for (let i = 6; i <= 21; i = i + 3) {
-    const weatherType = hourWiseForecast.hour[i].condition.text;
+    const weatherType = hourWiseForecast.hour[i].condition;
 
     todayForecastDiv.innerHTML += `<div class="forecast-card">
       <div class="cards text-center" id="weather-card">
@@ -276,26 +292,30 @@ function manipulateData(data) {
 
   for (let i = 0; i < 7; i++) {
     weekForecastDiv.innerHTML += `<div class="week-forecast-div row my-3 py-2">
-        <p class="day-name m-0 col-4">${
-          i == 0 ? "today" : dateToDay(weekForecast[i].date.split(" ")[0])
-        }</p>
-        <div class="d-flex align-items-center col-4">
-          ${getWeatherImageUrl(weekForecast[i].day.condition.text)}
-          <span class="ml-2">${weatherDay(
-            weekForecast[i].day.condition.text
-          )}</span>
-        </div>
-        <div class="col-4"> <p class="float-end">${
-          fahrenScale != true
-            ? Math.floor(weekForecast[i].day.maxtemp_c)
-            : Math.floor(weekForecast[i].day.maxtemp_f)
-        }/${
+    <div class="col-12 col-sm-4">
+      <p class="day-name m-0">${
+        i == 0 ? "today" : dateToDay(weekForecast[i].date.split(" ")[0])
+      }</p>
+    </div>
+    <div class="col-12 col-sm-4 d-flex align-items-center">
+      ${getWeatherImageUrl(weekForecast[i].day.condition)}
+      <span class="ml-2">${weatherDay(
+        weekForecast[i].day.condition.text
+      )}</span>
+    </div>
+    <div class="col-12 col-sm-4">
+      <p class="float-end">${
+        fahrenScale != true
+          ? Math.floor(weekForecast[i].day.maxtemp_c)
+          : Math.floor(weekForecast[i].day.maxtemp_f)
+      }/${
       fahrenScale != true
         ? Math.floor(weekForecast[i].day.mintemp_c)
         : Math.floor(weekForecast[i].day.maxtemp_f)
-    }</p></div>
-      </div>
-      ${i < 6 ? '<div style="border-bottom: 1px solid #ffffff85"></div>' : ""}`;
+    }</p>
+    </div>
+  </div>
+  ${i < 6 ? '<div class="col-12"><hr class="my-2 border" /></div>' : ""}`;
   }
   function dateToDay(dateString) {
     const dayName = new Date(dateString).toLocaleDateString("en-US", {
@@ -306,16 +326,3 @@ function manipulateData(data) {
 }
 
 // Call the fetchData function
-
-//changing css
-const cssLink = document.getElementById("cssLink");
-
-// Change the href attribute to a new CSS file
-// console.log(${data.current.is_day});
-// console.log("anshbir");
-// if(data.current.is_day === 0){
-//   cssLink.href = "./css/night.css";
-// }
-// if(data.current.daily_will_it_rain===1){
-//   cssLink.href = "./css/rainyWeather.css";
-// }

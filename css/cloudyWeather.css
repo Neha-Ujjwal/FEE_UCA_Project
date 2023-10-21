@@ -4,21 +4,24 @@
 }
 
 body {
-  background-image: url("../images/cloudy.jpg");
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 
-  height: 100vh;
+  /* height: 100vh; */
   overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;
+  background-position: center center;
+  /* overflow: hidden; */
   /* background-image: url("https://images.unsplash.com/photo-1623645932244-02c0160eac1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"); */
 }
 
 /* weather data showing div (glassmorphims effect) starts*/
-
+.main {
+  background-image: url("../images/cloudy.jpg");
+  overflow: scroll;
+}
 .data-div {
   position: relative;
   display: flex;
@@ -205,7 +208,7 @@ body {
 /*weather data mainpulation css ends*/
 
 #city {
-  color: white;
+  color: black;
 }
 
 .btn-circle {
@@ -231,3 +234,46 @@ body {
 /*weather data mainpulation css ends*/
 
 /*flipping  aimtion starts*/
+
+@media screen and (max-width: 650px) {
+  .current-Weather {
+    width: 100% !important;
+  }
+
+  .main {
+    overflow: scroll !important;
+  }
+  body {
+    margin-left: auto;
+    margin-right: auto;
+    height: 100% !important;
+    overflow: scroll;
+  }
+  .fahren-Cel-buttons {
+    position: relative;
+  }
+  .week-forecast {
+    width: 100% !important;
+  }
+  .current-Weather {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  body {
+    overflow: scroll;
+    height: 100% !important;
+  }
+  .main {
+    overflow: scroll !important;
+  }
+  .fahren-Cel-buttons {
+    position: relative;
+  }
+  .week-forecast {
+    display: none;
+  }
+  .current-Weather {
+    width: 100% !important;
+  }
+}
