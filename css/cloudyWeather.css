@@ -65,32 +65,61 @@ body {
 
 /*cloud moving animation starts*/
 
-.main .cloudy-weather {
+.main {
   position: absolute;
   top: 0;
-  /* bottom: 40; */
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.outer-div {
+  position: absolute;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-.main .cloudy-weather .cloud-animation {
+.cloud-animation {
   position: absolute;
-  top: -300px;
-  max-width: 100%;
-  animation: animate calc(10s * var(--i)) 2s linear infinite;
 }
-
+.cloud-animation-1 {
+  position: absolute;
+  top: -20%;
+  max-width: 100%;
+  background: url("./images/cloud6.png") center/cover no-repeat;
+  width: 1400px;
+  height: 1400px;
+  animation: animate 50s linear infinite;
+}
+.cloud-animation-2 {
+  position: absolute;
+  top: -10%;
+  max-width: 100%;
+  background: url("./images/cloud6.png") center/cover no-repeat;
+  width: 1200px;
+  height: 1200px;
+  animation: animate 40s linear infinite;
+}
+.cloud-animation-3 {
+  /* /position: absolute; */
+  top: -5%;
+  max-width: 100%;
+  background: url("./images/cloud6.png") center/cover no-repeat;
+  width: 1300px;
+  height: 1300px;
+  animation: animate 30s linear infinite;
+}
 @keyframes animate {
   0% {
     transform: translateX(-100%);
   }
   100% {
-    transform: translateX(+100%);
+    transform: translateX(150%);
   }
 }
-
 /*cloud moving animation ends*/
 
 /*weather data mainpulation css starts*/
@@ -174,3 +203,31 @@ body {
 }
 
 /*weather data mainpulation css ends*/
+
+#city {
+  color: white;
+}
+
+.btn-circle {
+  width: 40px;
+  height: 40px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+  border-radius: 50% !important;
+  float: right;
+  margin: 2px;
+}
+.fahren-Cel-buttons {
+  position: absolute;
+  right: 13px;
+  /* bottom: 5px; */
+  /* margin-bottom: 4px; */
+  /* top: 14px; */
+}
+
+/*weather data mainpulation css ends*/
+
+/*flipping  aimtion starts*/

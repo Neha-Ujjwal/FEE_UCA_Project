@@ -1,4 +1,31 @@
+const fahrenButton = document.getElementById("FahrenScale");
+const celScale = document.getElementById("celScale");
 const cityInput = document.getElementById("city");
+
+let fahrenScale = false;
+fahrenButton.addEventListener("click", function () {
+  // Set the flag to true when the button is clicked
+  fahrenScale = true;
+  // console.log("fahren");
+  document.querySelector(".today-forecast").innerHTML = "";
+  document.querySelector(".week-forecast").innerHTML = "";
+  fetchData();
+  // manipulateData();
+  // You can perform other actions here as well
+  // alert("Button clicked!");
+});
+celScale.addEventListener("click", function () {
+  // Set the flag to true when the button is clicked
+  fahrenScale = false;
+  console.log("fahren");
+  document.querySelector(".today-forecast").innerHTML = "";
+  document.querySelector(".week-forecast").innerHTML = "";
+  fetchData();
+  // manipulateData();
+  // You can perform other actions here as well
+  // alert("Button clicked!");
+});
+
 cityInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     validateCity();
@@ -22,7 +49,7 @@ function validateCity() {
     document.querySelector(".week-forecast").innerHTML = "";
     fetchData();
   }
-  cityInput.value = "";
+  // cityInput.value = "";
 }
 
 async function fetchData() {
@@ -43,7 +70,7 @@ async function fetchData() {
     }
 
     // Parse the response data as JSON
-    const data = await response.json();
+    data = await response.json();
 
     // Use the data in your application
     // console.log(data.name);
@@ -52,6 +79,7 @@ async function fetchData() {
     // console.log(url);
     manipulateData(data);
   } catch (error) {
+    console.log("error occured");
     console.error("Error:", error);
   }
 }
@@ -105,12 +133,34 @@ function weatherDay(data) {
   }
   return weatherOfDay;
 }
+
 function manipulateData(data) {
   const weatherImageMain = document.getElementById("weatherImageMain");
   weatherImageMain.innerHTML = getWeatherImageUrl(data.current.condition.text);
 
   // Get the image element(s) within "weatherImageMain"
   const images = weatherImageMain.getElementsByTagName("img");
+
+  const cssLink = document.getElementById("cssLink");
+  console.log(data.current.is_day);
+  console.log("bcbcbc");
+  console.log(data.forecast.forecastday[0].day.daily_will_it_rain);
+
+  console.log(data.current.condition.text);
+
+  if (data.current.condition.text === "Overcast") {
+    cssLink.href = "./css/cloudyWeather.css";
+    document.querySelector(".cloud-animation").style.display = "block";
+  } else if (data.forecast.forecastday[0].day.daily_will_it_rain === 1) {
+    cssLink.href = "./css/rainyWeather.css";
+    document.querySelector(".cloud-animation").style.display = "none";
+  } else if (data.current.is_day === 0) {
+    cssLink.href = "./css/night.css";
+    document.querySelector(".cloud-animation").style.display = "none";
+  } else {
+    cssLink.href = "./css/sunnyWeather.css";
+    document.querySelector(".cloud-animation").style.display = "none";
+  }
 
   // images is an HTMLCollection, so you may need to loop through the elements
   for (const image of images) {
@@ -141,10 +191,16 @@ function manipulateData(data) {
   timeDetailsDiv.innerHTML = `${currentDay} | ${currentTime}`;
 
   const tempDiv = document.getElementById("temp");
-  tempDiv.innerHTML = Math.floor(data.current.temp_c) + "°C";
+  tempDiv.innerHTML =
+    fahrenScale != true
+      ? Math.floor(data.current.temp_c) + "°C"
+      : Math.floor(data.current.temp_f) + "°F";
 
   const realFeelDiv = document.getElementById("real-feel");
-  realFeelDiv.innerHTML = `<b>${Math.floor(data.current.feelslike_c)}°</b>`;
+  realFeelDiv.innerHTML =
+    fahrenScale != true
+      ? `<b>${Math.floor(data.current.feelslike_c)}°</b>`
+      : `<b>${Math.floor(data.current.feelslike_f)}°</b>`;
 
   const windSpeedDiv = document.getElementById("wind-speed");
   windSpeedDiv.innerHTML = `<b>${data.current.wind_kph} Km/h</b>`;
@@ -188,27 +244,6 @@ function manipulateData(data) {
 
   for (let i = 6; i <= 21; i = i + 3) {
     const weatherType = hourWiseForecast.hour[i].condition.text;
-    // console.log(weatherType);
-
-    // let weatherImage;
-
-    // if (weatherType.includes("rain")) {
-    //   weatherImage = `<img src="/icons/Rain-icon.png" style="height: 40px; width: 60px" />`;
-    // } else if (
-    //   weatherType.includes("Cloud") ||
-    //   weatherType.includes("cloudy") ||
-    //   weatherType.includes("Overcast")
-    // ) {
-    //   weatherImage = `<img src="/icons/Cloud-icon.png" style="height: 40px; width: 50px" />`;
-    // } else if (
-    //   weatherType.includes("Fog") ||
-    //   weatherType.includes("Mist") ||
-    //   weatherType.includes("fog")
-    // ) {
-    //   weatherImage = `<img src="/icons/Fog-icon.png" style="height: 40px; width: 70px" />`;
-    // } else {
-    //   weatherImage = `<img src="/icons/${weatherType}-icon.png" style="height: 40px; width: 40px" />`;
-    // }
 
     todayForecastDiv.innerHTML += `<div class="forecast-card">
       <div class="cards text-center" id="weather-card">
@@ -219,7 +254,11 @@ function manipulateData(data) {
         }</h6>
         ${getWeatherImageUrl(weatherType)}
         <div class="day-temp">
-          <h5 class="temp">${Math.floor(hourWiseForecast.hour[i].temp_c)}°C</h5>
+          <h5 class="temp">${
+            fahrenScale != true
+              ? Math.floor(hourWiseForecast.hour[i].temp_c) + "°C"
+              : Math.floor(hourWiseForecast.hour[i].temp_f) + "°F"
+          }</h5>
         </div>
       </div>
     </div>`;
@@ -246,9 +285,15 @@ function manipulateData(data) {
             weekForecast[i].day.condition.text
           )}</span>
         </div>
-        <div class="col-4"> <p class="float-end">${Math.floor(
-          weekForecast[i].day.maxtemp_c
-        )}/${Math.floor(weekForecast[i].day.mintemp_c)}</p></div>
+        <div class="col-4"> <p class="float-end">${
+          fahrenScale != true
+            ? Math.floor(weekForecast[i].day.maxtemp_c)
+            : Math.floor(weekForecast[i].day.maxtemp_f)
+        }/${
+      fahrenScale != true
+        ? Math.floor(weekForecast[i].day.mintemp_c)
+        : Math.floor(weekForecast[i].day.maxtemp_f)
+    }</p></div>
       </div>
       ${i < 6 ? '<div style="border-bottom: 1px solid #ffffff85"></div>' : ""}`;
   }
@@ -261,3 +306,16 @@ function manipulateData(data) {
 }
 
 // Call the fetchData function
+
+//changing css
+const cssLink = document.getElementById("cssLink");
+
+// Change the href attribute to a new CSS file
+// console.log(${data.current.is_day});
+// console.log("anshbir");
+// if(data.current.is_day === 0){
+//   cssLink.href = "./css/night.css";
+// }
+// if(data.current.daily_will_it_rain===1){
+//   cssLink.href = "./css/rainyWeather.css";
+// }

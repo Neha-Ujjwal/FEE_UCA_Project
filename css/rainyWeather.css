@@ -201,3 +201,31 @@ body {
 }
 
 /*weather data mainpulation css ends*/
+
+#city {
+  color: white;
+}
+
+.btn-circle {
+  width: 40px;
+  height: 40px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+  border-radius: 50% !important;
+  float: right;
+  margin: 2px;
+}
+.fahren-Cel-buttons {
+  position: absolute;
+  right: 13px;
+  /* bottom: 5px; */
+  /* margin-bottom: 4px; */
+  /* top: 14px; */
+}
+
+/*weather data mainpulation css ends*/
+
+/*flipping  aimtion starts*/
