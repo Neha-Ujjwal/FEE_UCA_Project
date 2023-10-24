@@ -7,12 +7,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  overflow: hidden;
+
   margin: 0;
   padding: 0;
+  background-image: url("../images/cd.jpg") !important;
   /* height: 100vh; */
-
-  background-image: url("/images/cd.jpg");
 }
 
 /* weather data showing div (glassmorphims effect) starts*/
