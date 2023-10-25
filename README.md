@@ -13,7 +13,7 @@
 
 ## Introduction
 
-The **Weather Forecast App** is a sophisticated web application that provides users with real-time and precise weather updates. Developed using a combination of HTML, CSS, and JavaScript, the app seamlessly interfaces with a weather API to fetch and display the latest meteorological data. Notably, it goes a step further in enhancing user engagement by incorporating captivating animations, dynamically adjusting the background to mirror the current weather conditions and the time of day. This holistic approach contributes to an immersive and informative user experience, setting it apart from standard weather applications.
+The **Weather Forecast App** is a sophisticated web application that provides users with real-time and precise weather updates. Developed using a combination of HTML, CSS, and JavaScript, the app seamlessly interfaces with a weather API to fetch and display the latest meteorological data. Notably, it goes a step further in enhancing user engagement by incorporating captivating animations, and dynamically adjusting the background to mirror the current weather conditions and the time of day. This holistic approach contributes to an immersive and informative user experience, setting it apart from standard weather applications.
 
 With this app, you can quickly access essential weather details such as the current temperature, the forecast for the next 7 days, wind speed, humidity, and the chances of rain. The entire website is also responsive, making it accessible on various devices and screen sizes.
 
@@ -29,13 +29,13 @@ With this app, you can quickly access essential weather details such as the curr
 
 ## Demo
 
-You can access a live demo of the Weather App [here](#https://neha-ujjwal.github.io/FEE_UCA_Project/).
+You can access a live demo of the Weather App [here](https://neha-ujjwal.github.io/FEE_UCA_Project/).
 
 ## How to Use
 
 To use the Weather App, follow these simple steps:
 
-1. Visit the [demo link](#https://neha-ujjwal.github.io/FEE_UCA_Project/) or host the project on your preferred web server.
+1. Visit the [demo link](https://neha-ujjwal.github.io/FEE_UCA_Project/) or host the project on your preferred web server.
 
 2. The app will automatically detect your location and display the current weather conditions.
 
