@@ -86,7 +86,7 @@ body {
 
 .sunny-weather .flying-bird .bird-two {
   animation-duration: 0.8;
-  animation-delay: -0.75.s;
+  animation-delay: -0.75s;
 }
 
 .sunny-weather .flying-bird .bird-three {
@@ -346,7 +346,8 @@ input:focus {
 
 /*weather data mainpulation css ends*/
 
-/*flipping  aimtion starts*/
+/*responsive queries starts*/
+
 @media screen and (max-width: 650px) {
   .current-Weather {
     width: 100% !important;
@@ -383,3 +384,5 @@ input:focus {
     width: 100% !important;
   }
 }
+
+/*responsive queries starts*/

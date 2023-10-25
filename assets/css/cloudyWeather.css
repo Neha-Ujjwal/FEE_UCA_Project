@@ -208,8 +208,6 @@ body {
   align-items: center;
 }
 
-/*weather data mainpulation css ends*/
-
 #city {
   color: black;
 }
@@ -236,7 +234,7 @@ body {
 
 /*weather data mainpulation css ends*/
 
-/*flipping  aimtion starts*/
+/*responsive  aimtion starts*/
 
 @media screen and (max-width: 650px) {
   .current-Weather {
@@ -280,3 +278,5 @@ body {
     width: 100% !important;
   }
 }
+
+/*responsive  aimtion ends*/
