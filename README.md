@@ -26,6 +26,8 @@ With this app, you can quickly access essential weather details such as the curr
 - Wind speed information
 - Humidity level
 - Probability of rain
+- Completely Responsive
+- Temp in both Celsius and Fahrenheit
 
 ## Demo
 
@@ -37,13 +39,11 @@ To use the Weather App, follow these simple steps:
 
 1. Visit the [demo link](https://neha-ujjwal.github.io/FEE_UCA_Project/) or host the project on your preferred web server.
 
-2. The app will automatically detect your location and display the current weather conditions.
+2. You can enter a specific location or city to view the weather for that area by using the search bar.
 
-3. You can enter a specific location or city to view the weather for that area by using the search bar.
+3. Scroll down to see the 7-day weather forecast, including temperature, wind speed, humidity, and chances of rain.
 
-4. Scroll down to see the 7-day weather forecast, including temperature, wind speed, humidity, and chances of rain.
-
-5. Enjoy the dynamically changing background, which adapts to the current weather and the time of day.
+4. Enjoy the dynamically changing background, which adapts to the current weather and the time of day.
 
 ## API Usage
 
