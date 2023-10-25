@@ -39,9 +39,9 @@ cityInput.addEventListener("keydown", function (event) {
 function validateCity() {
   // Get the input value
   const cityName = cityInput.value;
-  const regex = /^[A-Za-z\s\-]+$/;
+  // const regex = /^[A-Za-z\s\-]+$/;
 
-  if (cityName.trim() === "" || !regex.test(cityName)) {
+  if (cityName.trim() === "") {
     // document.getElementById("error-message").innerHTML = "Please enter a valid city name.";
     alert("please enter a valid city!!");
     console.log("empty city");
