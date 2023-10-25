@@ -8,7 +8,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  overflow: auto;
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   /* height: 100vh; */
@@ -16,6 +16,9 @@ body {
 }
 /* weather data showing div (glassmorphims effect) starts*/
 
+::-webkit-scrollbar {
+  width: 0;
+}
 .data-div {
   position: relative;
   display: flex;
@@ -187,7 +190,7 @@ body {
   backdrop-filter: blur(5px);
   border-radius: 20px;
   color: white;
-  height: 644px;
+  height: 660px;
 }
 
 .week-forecast-div {

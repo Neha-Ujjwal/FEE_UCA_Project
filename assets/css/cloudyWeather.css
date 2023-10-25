@@ -9,7 +9,7 @@ body {
   align-items: center; */
 
   /* height: 100vh; */
-  /* overflow: auto; */
+  overflow: auto !important;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -20,9 +20,12 @@ body {
 /* weather data showing div (glassmorphims effect) starts*/
 .main {
   background-image: url("../images/cloudy.jpg");
-  overflow: scroll;
+
+  /* overflow-x: hidden; */
 }
+
 .data-div {
+  /* overflow: scroll; */
   position: relative;
   display: flex;
   justify-content: center;
@@ -196,7 +199,7 @@ body {
   backdrop-filter: blur(5px);
   border-radius: 20px;
   color: Black;
-  height: 644px;
+  height: 660px;
 }
 
 .week-forecast-div {
