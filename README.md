@@ -47,7 +47,7 @@ To use the Weather App, follow these simple steps:
 
 ## API Usage
 
-The Weather App uses a weather API to fetch weather data. You can find detailed documentation on the API and how to set it up in the `api.js` file. By default, it uses a free tier of the weather API, but you can also upgrade to a paid plan for more features and usage.
+The Weather App uses a weather API to fetch weather data. You can find detailed documentation on the API and how to set it up in the `index.js` file. By default, it uses a free tier of the weather API, but you can also upgrade to a paid plan for more features and usage.
 
 ```javascript
 // Example of API request
